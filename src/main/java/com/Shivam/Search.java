@@ -23,7 +23,7 @@ public class Search extends HttpServlet {
             //store the query of user
             PreparedStatement preparedStatement = connection.prepareStatement("insert into history values(?, ?);");
             preparedStatement.setString(1, keyword);
-            preparedStatement.setString(2, "http://localhost:8080/SearchEngineAccio/Search?keyword="+keyword);
+            preparedStatement.setString(2, "http://localhost:8080/SearchEngineShivam/Search?keyword="+keyword);
             preparedStatement.executeUpdate();
             //getting results after getting the ranking query
             ResultSet resultSet = connection.createStatement().executeQuery("select pageTitle, pageLink, (length(lower(pageText))-length(replace(lower(pageText), '" + keyword.toLowerCase() + "', '')))/length('" + keyword.toLowerCase() + "') as countoccurence from pages order by countoccurence desc limit 30;");
